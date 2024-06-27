@@ -160,7 +160,7 @@ public:
     }
 };
 
-// Test function using assertions
+// Test functions using assertions
 void test_chocolate_cake() {
     Bakery bakery;
     ChocolateCake* chocolateCake = new ChocolateCake();
@@ -181,9 +181,52 @@ void test_chocolate_cake() {
     
 }
 
+void test_vanilla_cake() {
+    Bakery bakery;
+    VanillaCake* vanillaCake = new VanillaCake();
+    vanillaCake->set_name("Vanilla Cake");
+    vanillaCake->set_ingredients({"flour", "sugar", "vanilla extract", "eggs", "milk"});
+    vanillaCake->set_baking_time(25);
+    vanillaCake->set_size("Large");
+    vanillaCake->set_price(420);
+    bakery.add_cake(vanillaCake);
+    std::vector<str> tasks = bakery.process_cakes();
+
+    assert(tasks.size() == 5);
+    assert(tasks[0] == "Baked Vanilla Cake");
+    assert(tasks[1] == "Frosted Vanilla Cake");
+    assert(tasks[2] == "Boxed Vanilla Cake");
+    assert(tasks[3] == "listed Vanilla Cake");
+    assert(tasks[4] == "Priced Vanilla Cake");
+    
+}
+
+void test_cheesecake() {
+    Bakery bakery;
+    Cheesecake* cheesecake = new Cheesecake();
+    cheesecake->set_name("Cheesecake");
+    cheesecake->set_ingredients({"cream cheese", "sugar", "eggs", "graham crackers"});
+    cheesecake->set_baking_time(45);
+    cheesecake->set_size("Small");
+    cheesecake->set_price(666);
+    bakery.add_cake(cheesecake);
+    std::vector<str> tasks = bakery.process_cakes();
+
+    assert(tasks.size() == 5);
+    assert(tasks[0] == "Baked Cheesecake");
+    assert(tasks[1] == "Frosted Cheesecake");
+    assert(tasks[2] == "Boxed Cheesecake");
+    assert(tasks[3] == "listed Cheesecake");
+    assert(tasks[4] == "Priced Cheesecake");
+    
+}
+
 
 int main ()
 {
     test_chocolate_cake();
+    test_vanilla_cake();
+    test_cheesecake();
+    std::cout << "All tests passed!" << std::endl;
     return 0;
 }
