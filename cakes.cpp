@@ -68,6 +68,66 @@ public:
     }
 };
 
+// Derived VanillaCake class
+class VanillaCake : public Cake {
+public:
+    VanillaCake() {}
+
+    void bake() const override {
+        std::cout << "Baking a vanilla cake with a light and fluffy texture for " << baking_time << " minutes." << std::endl;
+    }
+
+    void frost() const override {
+        std::cout << "Frosting the vanilla cake with buttercream icing." << std::endl;
+    }
+
+    void box() const override {
+        std::cout << "Boxing the vanilla cake in a simple, elegant box." << std::endl;
+    }
+
+    void list() const override {
+        std::cout << "List of Ingredients used: ";
+        for (const auto& ingredient : ingredients) {
+            std::cout << ingredient << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    void cost() const override{
+        std::cout << "All inclusive price of the product = " << price << "$." << std::endl;
+    }
+};
+
+// Derived Cheesecake class
+class Cheesecake : public Cake {
+public:
+    Cheesecake() {}
+
+    void bake() const override {
+        std::cout << "Baking a creamy cheesecake with a graham cracker crust for " << baking_time << " minutes." << std::endl;
+    }
+
+    void frost() const override {
+        std::cout << "Adding a layer of fruit topping to the cheesecake." << std::endl;
+    }
+
+    void box() const override {
+        std::cout << "Boxing the cheesecake in a refrigerated box." << std::endl;
+    }
+
+    void list() const override {
+        std::cout << "List of Ingredients used: ";
+        for (const auto& ingredient : ingredients) {
+            std::cout << ingredient << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    void cost() const override{
+        std::cout << "All inclusive price of the product = " << price << "$." << std::endl;
+    }
+};
+
 // Bakery class to manage cakes
 class Bakery {
     std::vector<Cake*> cakes;
@@ -120,6 +180,7 @@ void test_chocolate_cake() {
     assert(tasks[4] == "Priced Chocolate Cake");
     
 }
+
 
 int main ()
 {
