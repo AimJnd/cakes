@@ -68,8 +68,61 @@ public:
     }
 };
 
+// Bakery class to manage cakes
+class Bakery {
+    std::vector<Cake*> cakes;
+public:
+    ~Bakery() {
+        for (auto& cake : cakes) {
+            delete cake;
+        }
+    }
+
+    void add_cake(Cake* cake) {
+        cakes.push_back(cake);
+    }
+
+    std::vector<str> process_cakes() const {
+        std::vector<str> tasks;
+        for (const auto& cake : cakes) {
+            cake->bake();
+            tasks.push_back("Baked " + cake->get_name());
+            cake->frost();
+            tasks.push_back("Frosted " + cake->get_name());
+            cake->box();
+            tasks.push_back("Boxed " + cake->get_name());
+            cake->list();
+            tasks.push_back("listed " + cake->get_name());
+            cake->cost();
+            tasks.push_back("Priced " + cake->get_name());
+        }
+        return tasks;
+    }
+};
+
+// Test function using assertions
+void test_chocolate_cake() {
+    Bakery bakery;
+    ChocolateCake* chocolateCake = new ChocolateCake();
+    chocolateCake->set_name("Chocolate Cake");
+    chocolateCake->set_ingredients({"flour, ", "sugar, ", "cocoa powder, ", "eggs, ", "milk"});
+    chocolateCake->set_baking_time(30);
+    chocolateCake->set_size("Medium");
+    chocolateCake->set_price(69.9);
+    bakery.add_cake(chocolateCake);
+    std::vector<str> tasks = bakery.process_cakes();
+
+    assert(tasks.size() == 4);
+    assert(tasks[0] == "Baked Chocolate Cake");
+    assert(tasks[1] == "Frosted Chocolate Cake");
+    assert(tasks[2] == "Boxed Chocolate Cake");
+    assert(tasks[3] == "listed Chocolate Cake");
+    assert(tasks[4] == "Priced Chocolate Cake");
+    
+}
 
 int main ()
 {
+    test_chocolate_cake();
     return 0;
 }
