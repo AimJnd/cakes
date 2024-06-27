@@ -9,10 +9,10 @@ using str = std::string;
 class Cake {
 protected:
     str name;
-    std::vector<str> ingredients;
+    std::vector<str> ingredients; 
     int baking_time; // in minutes
-    str size;
-    double price;
+    str size; //small/medium/large
+    double price; //in $
 
 public:
     Cake() : baking_time(0) {}
@@ -128,7 +128,7 @@ public:
     }
 };
 
-// Bakery class to manage cakes
+// Bakery class to manage cakes and tests
 class Bakery {
     std::vector<Cake*> cakes;
 public:
@@ -221,12 +221,62 @@ void test_cheesecake() {
     
 }
 
+//Big test, testing all the classes using polymorphism
+void test_all() {
+    Bakery bakery;
+
+    Cake* chocolateCake = new ChocolateCake();
+    chocolateCake->set_name("Chocolate Cake");
+    chocolateCake->set_ingredients({"flour", "sugar", "cocoa powder", "eggs", "milk"});
+    chocolateCake->set_baking_time(30);
+    chocolateCake->set_size("Medium");
+    chocolateCake->set_price(69.9);
+    bakery.add_cake(chocolateCake);
+
+    Cake* vanillaCake = new VanillaCake();
+    vanillaCake->set_name("Vanilla Cake");
+    vanillaCake->set_ingredients({"flour", "sugar", "vanilla extract", "eggs", "milk"});
+    vanillaCake->set_baking_time(25);
+    vanillaCake->set_size("Large");
+    vanillaCake->set_price(420);
+    bakery.add_cake(vanillaCake);
+
+    Cake* cheesecake = new Cheesecake();
+    cheesecake->set_name("Cheesecake");
+    cheesecake->set_ingredients({"cream cheese", "sugar", "eggs", "graham crackers"});
+    cheesecake->set_baking_time(45);
+    cheesecake->set_size("Small");
+    cheesecake->set_price(666);
+    bakery.add_cake(cheesecake);
+
+    std::vector<str> tasks = bakery.process_cakes();
+
+    assert(tasks.size() == 15);
+    assert(tasks[0] == "Baked Chocolate Cake");
+    assert(tasks[1] == "Frosted Chocolate Cake");
+    assert(tasks[2] == "Boxed Chocolate Cake");
+    assert(tasks[3] == "listed Chocolate Cake");
+    assert(tasks[4] == "Priced Chocolate Cake");
+    assert(tasks[5] == "Baked Vanilla Cake");
+    assert(tasks[6] == "Frosted Vanilla Cake");
+    assert(tasks[7] == "Boxed Vanilla Cake");
+    assert(tasks[8] == "listed Vanilla Cake");
+    assert(tasks[9] == "Priced Vanilla Cake");
+    assert(tasks[10] == "Baked Cheesecake");
+    assert(tasks[11] == "Frosted Cheesecake");
+    assert(tasks[12] == "Boxed Cheesecake");
+    assert(tasks[13] == "listed Cheesecake");
+    assert(tasks[14] == "Priced Cheesecake");
+
+}
+
 
 int main ()
 {
     test_chocolate_cake();
     test_vanilla_cake();
     test_cheesecake();
-    std::cout << "All tests passed!" << std::endl;
+    test_all();
+    std::cout << "Mission complete. Repsect++" << std::endl;
     return 0;
 }
