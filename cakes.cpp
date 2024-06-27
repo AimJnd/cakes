@@ -38,6 +38,33 @@ public:
     int get_price () const {return price;}
 };
 
+// Derived ChocolateCake class
+class ChocolateCake : public Cake {
+public:
+    ChocolateCake() {}
+
+    void bake() const override {
+        std::cout << "Baking a chocolate cake with rich cocoa flavor for " << baking_time << " minutes." << std::endl;
+    }
+
+    void frost() const override {
+        std::cout << "Frosting the chocolate cake with dark chocolate ganache." << std::endl;
+    }
+
+    void box() const override {
+        std::cout << "Boxing the chocolate cake in a decorative box." << std::endl;
+    }
+
+    void list() const override {
+        std::cout << "List of ingredients used : " << ingredients << std::endl;
+    }
+
+    void cost() const override{
+        std::cout << "All inclusive price of the product = " << price << "$." << std::endl;
+    }
+};
+
+
 int main ()
 {
     return 0;
