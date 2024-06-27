@@ -56,7 +56,11 @@ public:
     }
 
     void list() const override {
-        std::cout << "List of ingredients used : " << ingredients << std::endl;
+        std::cout << "List of Ingredients used: ";
+        for (const auto& ingredient : ingredients) {
+            std::cout << ingredient << " ";
+        }
+        std::cout << std::endl;
     }
 
     void cost() const override{
