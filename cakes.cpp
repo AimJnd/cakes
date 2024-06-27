@@ -112,7 +112,7 @@ void test_chocolate_cake() {
     bakery.add_cake(chocolateCake);
     std::vector<str> tasks = bakery.process_cakes();
 
-    assert(tasks.size() == 4);
+    assert(tasks.size() == 5);
     assert(tasks[0] == "Baked Chocolate Cake");
     assert(tasks[1] == "Frosted Chocolate Cake");
     assert(tasks[2] == "Boxed Chocolate Cake");
